@@ -1,0 +1,37 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<h2>{{ student.name }} — Attendance</h2>
+
+<div class="card">
+
+<table>
+
+<tr>
+    <th>Date</th>
+    <th>Status</th>
+</tr>
+
+{% for r in records %}
+<tr>
+    <td>{{ r.date }}</td>
+    <td>{{ r.status }}</td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="2">No attendance yet</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+
+<a class="btn edit" href="/attendance/{{ student.id }}">
+    Mark Again
+</a>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login — Coaching System</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    /* BACKGROUND */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #daad19, #ece5cf, #94771a);
+}
+
+/* CARD */
+
+.login-card {
+    background: rgba(255,255,255,0.95);
+    padding: 35px;
+    width: 350px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0b3c5d;
+    letter-spacing: 1px;
+}
+
+/* FORM */
+
+form label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #334155;
+}
+
+form input {
+    width: 100%;
+    padding: 11px;
+    margin-top: 6px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    border: 1px solid #d4af37;
+    font-size: 14px;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #b8962e;
+    box-shadow: 0 0 5px rgba(212,175,55,0.5);
+}
+
+/* BUTTON */
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #7c6b36, #eec341);
+    color: #1e293b;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+
+.footer-text {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 12px;
+    color: #475569;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+<h2>Welcome 👋</h2>
+
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+
+<button type="submit" class="login-btn">
+Login
+</button>
+<p style="text-align:center;">
+    <a href="/otp-reset/">Forgot password?</a>
+</p>
+
+</form>
+
+<div class="footer-text">
+Coaching Management System
+</div>
+
+</div>
+
+</body>
+</html>

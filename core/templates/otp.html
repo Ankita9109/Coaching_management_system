@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Password Reset</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Segoe UI, sans-serif;
+    background:linear-gradient(135deg,#17a7a9, #ece5cf, #17a7a9);
+}
+
+.card{
+    background:white;
+    padding:35px;
+    width:340px;
+    border-radius:14px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+label{
+    font-size:14px;
+    font-weight:600;
+}
+
+input{
+    width:100%;
+    padding:11px;
+    margin-top:6px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+input:focus{
+    outline:none;
+    border-color:#51bba8;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    background:#48ae9c;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#378e7e;
+}
+
+.error{
+    color:red;
+    text-align:center;
+    margin-top:10px;
+    font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Password Reset 🔑</h2>
+
+<form method="post">
+{% csrf_token %}
+
+{% if not stage %}
+
+<label>Username</label>
+<input name="username" required>
+
+<button>Send OTP</button>
+
+{% else %}
+
+<label>OTP</label>
+<input name="otp" required>
+
+<label>New Password</label>
+<input type="password" name="password" required>
+
+<button>Reset Password</button>
+
+<p style="text-align:center;">Your OTP: <b>{{ otp }}</b></p>
+
+{% endif %}
+
+</form>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>

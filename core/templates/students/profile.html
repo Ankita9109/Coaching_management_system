@@ -1,0 +1,28 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<h2>{{ student.name }} Profile</h2>
+
+<div class="card">
+
+<p><b>Phone:</b> {{ student.phone }}</p>
+
+<p><b>Attendance:</b> {{ attendance }}</p>
+
+<p><b>Course:</b>{{ student.course.name }}</p>
+
+<p><b>Total Fee:</b> ₹{{ student.course.fee }}</p>
+
+<p><b>Paid Fee:</b>₹{{ fees }}</p>
+
+<p><b>Remaining:</b> ₹{{ remaining }}</p>
+
+
+<a class="btn view" href="/fees/{{ student.id }}">View Fees</a>
+
+<a class="btn view" href="/attendance/{{ student.id }}">View Attendance</a>
+
+</div>
+
+{% endblock %}

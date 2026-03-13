@@ -1,0 +1,29 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<div class="card form-card">
+
+<h2>Add Fee for {{ student.name }}</h2>
+
+<form method="post">
+{% csrf_token %}
+
+<label>Amount</label>
+<input type="number" name="amount" required>
+
+<br><br>
+
+<button type="submit" class="btn primary">
+Save Fee
+</button>
+
+<a href="/fees/{{ student.id }}/" class="btn">
+Cancel
+</a>
+
+</form>
+
+</div>
+
+{% endblock %}

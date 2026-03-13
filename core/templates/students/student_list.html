@@ -1,0 +1,47 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<h2>Students</h2>
+
+<div class="card">
+
+<form method="get">
+<input name="q" placeholder="Search student">
+<button class="btn">Search</button>
+</form>
+
+<br>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Course</th>
+<th>Actions</th>
+</tr>
+
+{% for s in students %}
+<tr>
+
+<td>{{ s.name }}</td>
+<td>{{ s.phone }}</td>
+<td>{{ s.course.name }}</td>
+
+<td>
+<a class="btn" href="/edit-student/{{ s.id }}">Edit</a>
+<a class="btn" href="/delete-student/{{ s.id }}">Delete</a>
+<a class="btn" href="/fees/{{ s.id }}">Fees</a>
+<a class="btn" href="/attendance/{{ s.id }}">Attendance</a>
+<a class="btn" href="/profile/{{ s.id }}">Profile</a>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Coaching Management System</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+<div class="header">
+Coaching Management System
+
+{% if user.is_authenticated %}
+<span>
+Welcome {{ user.username }} |
+<a href="/logout/" style="color:white;">Logout</a>
+</span>
+{% endif %}
+</div>
+
+<div class="container">
+
+<div class="sidebar">
+<a href="/dashboard/">Dashboard</a>
+<a href="/students/">Students</a>
+<a href="/add-student/">Add Student</a>
+<a href="/daily-attendance/">Attendance</a>
+</div>
+
+<div class="content">
+
+{% block content %}
+{% endblock %}
+
+</div>
+
+</div>
+
+</body>
+</html>

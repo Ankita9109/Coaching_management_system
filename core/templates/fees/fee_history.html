@@ -1,0 +1,42 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<h2>{{ student.name }} Fee History</h2>
+
+<a href="/add-fee/{{ student.id }}/" class="btn primary">
+Add Fee
+</a>
+
+<br><br>
+
+<table class="table">
+
+<tr>
+<th>Amount</th>
+<th>Date</th>
+<th>Receipt</th>
+</tr>
+
+{% for f in fees %}
+
+<tr>
+
+<td>₹{{ f.amount }}</td>
+<td>{{ f.date }}</td>
+
+<td>
+<a href="/receipt/{{ f.id }}/" class="btn view">
+Receipt
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+</table>
+<!-- <a href="/add-fee/{{ student.id }}/" class="btn primary">
+Add Fee
+</a> -->
+
+{% endblock %}

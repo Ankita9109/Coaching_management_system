@@ -1,0 +1,17 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<div class="card">
+<h3>Total Students</h3>
+<p>{{ students }}</p>
+</div>
+
+<div class="card">
+<h3>Total Fees</h3>
+<p>₹ {{ fees }}</p>
+</div>
+
+{% endblock %}

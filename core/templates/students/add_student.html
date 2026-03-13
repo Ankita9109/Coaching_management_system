@@ -1,0 +1,22 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<h2>Add Student</h2>
+
+<div class="card form-card">
+
+<form method="post">
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button class="submit-btn">
+Save Student
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}
