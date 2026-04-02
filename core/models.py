@@ -11,7 +11,7 @@ class Student(models.Model):
     
 class Fee(models.Model):
     # agr me student record se kisi student ko delete karungi to 
-    # fk ke thougth us name re relete sari row ,data delete ho jayega
+    # fk ke thougth us name se relete sari row ,data delete ho jayega
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     amount = models.IntegerField()
     date = models.DateField(auto_now_add=True)
