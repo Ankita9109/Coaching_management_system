@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+
 </head>
 
 <body>
@@ -23,13 +24,19 @@ Welcome {{ user.username }} |
 {% endif %}
 </div>
 
+
+
+
 <div class="container">
 
 <div class="sidebar">
 <a href="/dashboard/">Dashboard</a>
 <a href="/students/">Students</a>
+<a href="/courses/">Courses</a>
+
 <a href="/add-student/">Add Student</a>
 <a href="/daily-attendance/">Attendance</a>
+
 </div>
 
 <div class="content">
@@ -40,6 +47,7 @@ Welcome {{ user.username }} |
 </div>
 
 </div>
+
 
 </body>
 </html>

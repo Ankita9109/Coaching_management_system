@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student
+from .models import Student,Course
 import re
 
 
@@ -29,3 +29,8 @@ class StudentForm(forms.ModelForm):
             )
 
         return phone
+    
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['name', 'fee']

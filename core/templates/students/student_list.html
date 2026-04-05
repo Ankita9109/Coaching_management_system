@@ -30,11 +30,16 @@
 <td>{{ s.course.name }}</td>
 
 <td>
-<a class="btn" href="/edit-student/{{ s.id }}">Edit</a>
-<a class="btn" href="/delete-student/{{ s.id }}">Delete</a>
-<a class="btn" href="/fees/{{ s.id }}">Fees</a>
-<a class="btn" href="/attendance/{{ s.id }}">Attendance</a>
-<a class="btn" href="/profile/{{ s.id }}">Profile</a>
+
+<select onchange="handleAction(this.value, '{{ s.id }}')">
+    <option value="">Actions</option>
+    <option value="edit">Edit</option>
+    <option value="delete">Remove</option>
+    <option value="fees">Fees</option>
+    <option value="attendance">Attendance</option>
+    <option value="profile">Profile</option>
+</select>
+
 </td>
 
 </tr>
@@ -43,5 +48,26 @@
 </table>
 
 </div>
+
+<!-- ✅ JS yahi andar hona chahiye -->
+<script>
+function handleAction(action, id) {
+    if (action === "edit") {
+        window.location.href = "/edit-student/" + id;
+    }
+    else if (action === "delete") {
+        window.location.href = "/delete-student/" + id;
+    }
+    else if (action === "fees") {
+        window.location.href = "/fees/" + id;
+    }
+    else if (action === "attendance") {
+        window.location.href = "/attendance/" + id;
+    }
+    else if (action === "profile") {
+        window.location.href = "/profile/" + id;
+    }
+}
+</script>
 
 {% endblock %}

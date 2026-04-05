@@ -1,0 +1,32 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<div class="top-bar">
+    <h2>Courses</h2>
+    
+</div>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Fee</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for c in courses %}
+    <tr>
+        <td>{{ c.name }}</td>
+        <td>₹ {{ c.fee }}</td>
+        <td>
+            <a href="{% url 'edit_course' c.id %}" class="btn btn-edit">Edit</a>
+            <a href="{% url 'delete_course' c.id %}" class="btn btn-delete"
+               onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="{% url 'add_course' %}" class="btn btn-add">+ Add Course</a>
+
+{% endblock %}

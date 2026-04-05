@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models import Sum
+from .models import Course
+from .forms import CourseForm
 from reportlab.pdfgen import canvas
 import random
 
@@ -78,15 +80,36 @@ def delete_student(request, id):
 def add_fee(request, student_id):
     student = get_object_or_404(Student, id=student_id)
 
-    if request.method == "POST":
-        amount = request.POST.get("amount")
+    course_fee = student.course.fee   # course fee
+    total_paid = Fee.objects.filter(student=student).aggregate(
+        total=Sum("amount")
+    )["total"] or 0
 
-        if amount:
-            Fee.objects.create(student=student, amount=amount)
+    remaining = course_fee - total_paid   # remaining before payment
+
+    if request.method == "POST":
+        amount = int(request.POST.get("amount"))
+
+        # validation (extra fee na daale)
+        if amount > remaining:
+            return render(request, "fees/add_fee.html", {
+                "student": student,
+                "course_fee": course_fee,
+                "total_paid": total_paid,
+                "remaining": remaining,
+                "error": "Fee exceeds remaining amount!"
+            })
+
+        Fee.objects.create(student=student, amount=amount)
 
         return redirect("fee_history", student_id=student.id)
 
-    return render(request, "fees/add_fee.html", {"student": student})
+    return render(request, "fees/add_fee.html", {
+        "student": student,
+        "course_fee": course_fee,
+        "total_paid": total_paid,
+        "remaining": remaining
+    })
 
 
 @login_required
@@ -242,6 +265,34 @@ def otp_reset(request):
         return render(request, "otp.html", {"stage": "verify", "error": "Wrong OTP"})
 
     return render(request, "otp.html")
+
+#  Course List
+def course_list(request):
+    courses = Course.objects.all()
+    return render(request, 'students/course_list.html', {'courses': courses})
+
+#  Add Course
+def add_course(request):
+    form = CourseForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('course_list')
+    return render(request, 'students/course_form.html', {'form': form})
+
+#  Edit Course
+def edit_course(request, id):
+    course = get_object_or_404(Course, id=id)
+    form = CourseForm(request.POST or None, instance=course)
+    if form.is_valid():
+        form.save()
+        return redirect('course_list')
+    return render(request, 'students/course_form.html', {'form': form})
+
+#  Delete Course
+def delete_course(request, id):
+    course = get_object_or_404(Course, id=id)
+    course.delete()
+    return render(request, 'students/ course_list.html')
 
 
 # @login_required

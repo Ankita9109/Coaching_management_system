@@ -42,6 +42,13 @@ urlpatterns = [
     path('daily-attendance/', views.daily_attendance, name='daily_attendance'),
     path("receipt/<int:fee_id>/", views.fee_receipt, name="fee_receipt"),
 
+    # course all urls
+    path('courses/', views.course_list, name='course_list'),
+    path('courses/add/', views.add_course, name='add_course'),
+    path('courses/edit/<int:id>/', views.edit_course, name='edit_course'),
+    path('courses/delete/<int:id>/', views.delete_course, name='delete_course'),
+
+
     # Forgot password flow
 path('password-reset/',
      auth_views.PasswordResetView.as_view(
