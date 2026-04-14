@@ -292,7 +292,7 @@ def edit_course(request, id):
 def delete_course(request, id):
     course = get_object_or_404(Course, id=id)
     course.delete()
-    return render(request, 'students/ course_list.html')
+    return render(request, "students/course_list.html")
 
 
 # @login_required

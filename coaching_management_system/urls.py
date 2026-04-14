@@ -47,6 +47,7 @@ urlpatterns = [
     path('courses/add/', views.add_course, name='add_course'),
     path('courses/edit/<int:id>/', views.edit_course, name='edit_course'),
     path('courses/delete/<int:id>/', views.delete_course, name='delete_course'),
+    
 
 
     # Forgot password flow
