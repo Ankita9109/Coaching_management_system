@@ -295,6 +295,13 @@ def delete_course(request, id):
     return render(request, "students/course_list.html")
 
 
+
+def create_admin(request):
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@gmail.com', 'admin123')
+    return HttpResponse("Admin created")
+
+
 # @login_required
 # def dashboard(request):
 #     total_students = Student.objects.count()

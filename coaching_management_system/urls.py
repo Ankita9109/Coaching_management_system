@@ -75,4 +75,6 @@ path('reset/done/',
      ),
      name='password_reset_complete'),
 
+path('create-admin/', views.create_admin),
+
 ]
