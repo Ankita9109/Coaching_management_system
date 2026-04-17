@@ -1,0 +1,20 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$1200000$KH8B9Ja4JnIxAIcT60Um2f$wuXB+CLdztuk1tyueIrCASZqvevIZ35ynBzb2SuGrHA=",
+            "last_login": "2026-04-15T03:37:38.903Z",
+            "is_superuser": true,
+            "username": "Anku",
+            "first_name": "",
+            "last_name": "",
+            "email": "anku123@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2026-03-12T11:10:13.840Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

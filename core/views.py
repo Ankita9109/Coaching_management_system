@@ -296,10 +296,10 @@ def delete_course(request, id):
 
 
 
-def create_admin(request):
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@gmail.com', 'admin123')
-    return HttpResponse("Admin created")
+# def create_admin(request):
+#     if not User.objects.filter(username='admin').exists():
+#         User.objects.create_superuser('admin', 'admin@gmail.com', 'admin123')
+#     return HttpResponse("Admin created")
 
 
 # @login_required
