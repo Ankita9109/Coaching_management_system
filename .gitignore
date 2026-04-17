@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 
 # Django
-db.sqlite3
+*.sqlite3
 *.log
 
 # Virtual environment
@@ -13,3 +13,6 @@ venv/
 
 # Mac
 .DS_Store
+
+# Static
+staticfiles/
