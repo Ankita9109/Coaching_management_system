@@ -3,7 +3,7 @@
         "model": "auth.user",
         "pk": 1,
         "fields": {
-            "password": "pbkdf2_sha256$1200000$KH8B9Ja4JnIxAIcT60Um2f$wuXB+CLdztuk1tyueIrCASZqvevIZ35ynBzb2SuGrHA=",
+            "password": "Anku@123",
             "last_login": "2026-04-15T03:37:38.903Z",
             "is_superuser": true,
             "username": "Anku",
